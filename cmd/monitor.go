@@ -75,7 +75,7 @@ var actionCmd = &cobra.Command{
 		}
 
 		// Build the base url
-		baseURL := baseDomain + "monitoring"
+		baseURL := baseDomain + "server/monitoring"
 
 		// Get current system stats
 		memory, _ := mem.VirtualMemory()
