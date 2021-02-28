@@ -1,4 +1,4 @@
-module github.com/codions/deployer-agent/v2
+module github.com/codions/deployer-agent/main
 
 go 1.14
 
