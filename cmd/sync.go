@@ -35,7 +35,7 @@ var syncCmd = &cobra.Command{
 
 		// Get the organisation id
 		var orgId string
-		viper.UnmarshalKey("orgid", &orgId)
+		viper.UnmarshalKey("orgId", &orgId)
 
 		if len(orgId) <= 0 {
 			color.Red("The organisation id is missing from your Deployer configuration.\nPlease check you've correctly configured Deployer on this server and try again.")
@@ -43,17 +43,17 @@ var syncCmd = &cobra.Command{
 		}
 
 		// Get the server api key
-		var serverAPIKey string
-		viper.UnmarshalKey("apikey", &serverAPIKey)
+		var serverId string
+		viper.UnmarshalKey("serverId", &serverId)
 
-		if len(serverAPIKey) <= 0 {
+		if len(serverId) <= 0 {
 			color.Red("The server API key is missing.\nPlease check you've correctly configured Deployer on this server and try again.")
 			os.Exit(1)
 		}
 
 		// Get the base domain, which can optionally be overridden
 		var baseDomain string
-		viper.UnmarshalKey("basedomain", &baseDomain)
+		viper.UnmarshalKey("baseDomain", &baseDomain)
 
 		if len(baseDomain) <= 0 {
 			// No overridden base domain, fall back to the default
@@ -61,7 +61,7 @@ var syncCmd = &cobra.Command{
 		}
 
 		// Build the base url
-		baseURL := baseDomain + "keys/" + orgId + "/" + serverAPIKey + "/"
+		baseURL := baseDomain + "keys/" + orgId + "/" + serverId + "/"
 
 		// Loop over accounts and sync
 		for _, account := range accounts {
