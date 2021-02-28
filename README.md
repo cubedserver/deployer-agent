@@ -1,4 +1,4 @@
-# Deployer
+# Deployer Agent
 
 This repository contains the source code for the Deployer Agent. A small Go based package that is used to synchronize your account SSH keys. Please note that to use this you'll need to first sign up for an account at https://deployer.codions.com
 
