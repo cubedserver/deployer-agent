@@ -1,4 +1,4 @@
-Deployer
+# Deployer
 
 This repository contains the source code for the Deployer Agent. A small Go based package that is used to synchronize your account SSH keys. Please note that to use this you'll need to first sign up for an account at https://deployer.codions.com
 
@@ -10,19 +10,29 @@ Whilst the Deployer Agent is a fairly small and minimal package, it does have a 
 
 Whilst the agent is likely to work fine on other *nix based systems, these are the ones we currently officially support:
 
-* CentOS 7
-* CentOS 6
-* Debian 10 (Buster)
-* Debian 9 (Stretch)
-* Debian 8 (Jessie)
-* Debian 7 (Wheezy)
-* Fedora 30
-* Fedora 29
-* Fedora 28
-* Ubuntu 18.04
-* Ubuntu 16.04
+- CentOS
+    - CentOS 8
+    - CentOS 7
+    - CentOS 6
+- Debian
+    - Debian 10 (Buster)
+    - Debian 9 (Stretch)
+    - Debian 8 (Jessie)
+    - Debian 7 (Wheezy)
 
-### Permissions
+- Fedora
+    - Fedora 32
+    - Fedora 31
+    - Fedora 30
+    - Fedora 29
+    - Fedora 28
+
+- Ubuntu
+    - Ubuntu 20.04
+    - Ubuntu 18.04
+    - Ubuntu 16.04
+
+## Permissions
 
 The Deployer Agent must be run as a high-level user, with permission to modify files owned by another user.
 
@@ -35,10 +45,15 @@ The agent includes a number of commands. These include the ability to add a new 
 
 Details on each command can be returned by running `deployer --help` from command line.
 
-## Support
+## Changelog
 
-### Agent Bug Reports & Feature Requests
-If you've found a bug in the agent, or would like to request a new feature, please open a ticket, providing as much detail as possible (e.g operating system, agent version, etc).
+Please see [Releases](../../releases) for more information what has changed recently.
 
-Please do not provide any personal Deployer account details when opening an issue as these are publicly accessible.
+## Security Vulnerabilities
+
+If you discover any security related issues, please email dev@codions.com instead of using the issue tracker.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
