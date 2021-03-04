@@ -88,7 +88,7 @@ var syncCmd = &cobra.Command{
 			}
 
 			// Set our custom useragent
-			req.Header.Set("User-Agent", "DeployerAgent-v2.0.0;"+runtime.GOOS)
+			req.Header.Set("User-Agent", "DeployerAgent-v1.0.0;"+runtime.GOOS)
 
 			// Run the request
 			res, getErr := httpClient.Do(req)
