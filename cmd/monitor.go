@@ -12,12 +12,12 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	"github.com/shirou/gopsutil/cpu"
-	"github.com/shirou/gopsutil/disk"
-	"github.com/shirou/gopsutil/host"
-	"github.com/shirou/gopsutil/load"
+	"github.com/shirou/gopsutil/v3/cpu"
+	"github.com/shirou/gopsutil/v3/disk"
+	"github.com/shirou/gopsutil/v3/host"
+	"github.com/shirou/gopsutil/v3/load"
+	"github.com/shirou/gopsutil/v3/mem"
 
-	"github.com/shirou/gopsutil/mem"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -80,8 +80,6 @@ var actionCmd = &cobra.Command{
 		// Get current system stats
 		memory, _ := mem.VirtualMemory()
 		loadAvg, _ := load.Avg()
-		cpuHw, _ := cpu.Info()
-		//percent, _ := cpu.Percent(time.Second, true)
 		uptime, _ := host.Uptime()
 		misc, _ := load.Misc()
 		platform, family, version, _ := host.PlatformInformation()
@@ -113,7 +111,8 @@ var actionCmd = &cobra.Command{
 		form.Add("procs[total]", fmt.Sprint(misc.ProcsTotal))
 
 		// Generic CPU HW
-		form.Add("cpu", fmt.Sprint(cpuHw))
+		form.Add("cpu[raw]", fmt.Sprint(cpu.Info()))
+		form.Add("cpu[percent]", fmt.Sprint(cpu.Percent(time.Second, true)))
 
 		// Uptime
 		form.Add("uptime_seconds", fmt.Sprint(uptime))
@@ -143,9 +142,9 @@ var actionCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		req.Header.Set("User-Agent", "DeployerAgent-v1.0.0;"+runtime.GOOS)
+		req.Header.Set("User-Agent", "DeployerAgent-v2.0.0;"+runtime.GOOS)
 		req.Header.Set("TeamApiKey", teamAPIKey)
-		req.Header.Set("ServerApiKey", serverId)
+		req.Header.Set("ServerId", serverId)
 		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 		httpClient.Do(req)
 	},
